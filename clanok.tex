@@ -1,30 +1,28 @@
-% Metódy inžinierskej práce
 
 \documentclass[10pt,twoside,slovak,a4paper]{article}
 
 \usepackage[slovak]{babel}
 %\usepackage[T1]{fontenc}
-\usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
+\usepackage[IL2]{fontenc} 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{url} % príkaz \url na formátovanie URL
-\usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
+\usepackage{url} 
+\usepackage{hyperref} 
 
 \usepackage{cite}
-%\usepackage{times}
+
 
 \pagestyle{headings}
 
-\title{Názov\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2015/16, vedenie: Meno Priezvisko}} % meno a priezvisko vyučujúceho na cvičeniach
+\title{Umelá inteligencia v autonómnych autách a iných vozidlách\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2021/22, vedenie: Zuzana Špitálová}} 
 
-\author{Meno Priezvisko\\[2pt]
+\author{Jakub grúber\\[2pt]
 	{\small Slovenská technická univerzita v Bratislave}\\
 	{\small Fakulta informatiky a informačných technológií}\\
-	{\small \texttt{...@stuba.sk}}
+	{\small \texttt{xgruber@stuba.sk}}
 	}
 
-\date{\small 30. september 2015} % upravte
-
+\date{\small 12. október 2021} 
 
 
 \begin{document}
@@ -34,91 +32,40 @@
 \begin{abstract}
 \ldots
 \end{abstract}
+Umelá inteligencia je veľmi dôležitou súčasťou moderného výskumu. Začína sa využívať v mnohých oblastiach a jednou z týchto oblastí je aj automobilový priemysel. Cieľom je vytvoriť autonómne vozidlo, ktoré bude schopné jazdiť s minimálnymi alebo žiadnymi zásahmi šoféra. V mojej práci by som sa chcel zamerať na to, ako funguje umelá inteligencia v autonómnych autách (aké úlohy vykonáva, čo spracúva...), aké postupy a prostriedky sa na jej fungovanie využívajú (neurónové siete, veľké dátové úložiská... ) , aký je stav v oblasti implementácie umelej inteligencie do autonómnych áut, ako sa auto „učí“ samo šoférovať (proces zdokonaľovania reakcii umelej inteligencie auta na rôzne situácie), morálne otázky, ktoré z implementácie umelej inteligencie do áut vyvstávajú, aké problémy sa pri jej implementácii vyskytujú a dopady využívania autonómnych áut na spoločnosť. \cite{PLP-Framework}
 
 
-
-\section{Úvod}
-
-Motivujte čitateľa a vysvetlite, o čom píšete. Úvod sa väčšinou nedelí na časti.
-
-Uveďte explicitne štruktúru článku. Tu je nejaký príklad.
-Základný problém, ktorý bol naznačený v úvode, je podrobnejšie vysvetlený v časti~\ref{nejaka}.
-Dôležité súvislosti sú uvedené v častiach~\ref{dolezita} a~\ref{dolezitejsia}.
-Záverečné poznámky prináša časť~\ref{zaver}.
-
-
-
-\section{Nejaká časť} \label{nejaka}
-
-Z obr.~\ref{f:rozhod} je všetko jasné. 
-
-\begin{figure*}[tbh]
-\centering
-%\includegraphics[scale=1.0]{diagram.pdf}
-Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
-\caption{Rozhodujúci argument.}
-\label{f:rozhod}
-\end{figure*}
-
-
-
-\section{Iná časť} \label{ina}
-
-Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
-
-Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
-
-
-\subsection{Nejaké vysvetlenie} \label{ina:nejake}
-
-Niekedy treba uviesť zoznam:
-
-\begin{itemize}
-\item jedna vec
-\item druhá vec
-	\begin{itemize}
-	\item x
-	\item y
-	\end{itemize}
-\end{itemize}
-
-Ten istý zoznam, len číslovaný:
-
-\begin{enumerate}
-\item jedna vec
-\item druhá vec
-	\begin{enumerate}
-	\item x
-	\item y
-	\end{enumerate}
+\section{Úvod} \label{uvod}
+V mojej práci sa zameriavam na umelú inteligenciu v autonómnych autách. Je to oblasť, ktorá je pomerne nová, no boli v nej učinené veľké pokroky. Autonómne autá sa pomaly ale isto stávajú súčasťou bežného života. Dokážu vykonávať celé množstvo úkonov bez zásahu vodiča a vo svete je snaha ich čoraz viac implementovať do rôznych oblastí, či už ide o každodennú dopravu, hromadnú dopravu, upravené vozidlá pre zdravotne znevýhodnených a rôzne iné vozidlá pre rozmanité špecifické úkony \cite{Fieldsofapplication} . Moja práca bude rozdelená na časti, kde sa budem venovať týmto otázkam a problematikám: \begin{enumerate} \item Ako funguje umelá inteligencia v autonómnych vozidlách  (klasifikácia autonómnych vozidiel, aké ovládacie prvky a technológie vozidlo používa, funkcia umelej inteligencie a ako sa vozidlo "učí" samo šoférovať)
+\item Stav implementácie umelej inteligencie do automobilového sektora (problémy pri implementácii umelej inteligencie do vozidiel)
+\item Dopady na spoločnosť (morálne otázky vyplývajúce z implementácie umelej inteligencie do vozidiel)
 \end{enumerate}
 
+\section{Ako funguje umelá inteligencia v autonómnych vozidlách}
 
-\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
+\subsection{Klasifikácia autonómnych vozidiel}
+Autonómne vozidlá sú roztriedené do šiestich rôznych úrovní podľa klasifikácie J3016 zverejnenej v roku 2014 (posledná aktualizácia 1.7.2019) asociáciou SAE (Society of Automotive Engineers). Vozidlá sú podľa klasifikácie rozdelené do nasledovných úrovní: \begin{itemize}
+\item Úroveň 0 (žiadna automatizácia): do tejto úrovne spadá väčšina dnešných vozidiel. Všetky úkony sú vykonávané vodičom. Sú to napríklad točenie volantom, akcelerácia, brzdenie, monitorovanie okolia, navigácia, odbáčanie a dávanie signálu o odbáčaní smerovkou, zmena jazdného pruhu. Možu byť prítomné niektoré varovné systémy ako kontrola slepého bodu alebo upozornenie pred kolíziou. 
+\item Úroveň 1 (asistencia vodiča): vozidlo môže točiť volantom, zrýchľovať aj brzdiť ale nie vo všetkých situáciach. Vodič musí byť vždy pripravený po výzve vozidla zasiahnuť. To znamená, že musí sledovať dopravnú situáciu a byť ostražitý.
+\item Úroveň 2 (čiastočná asistencia vodiča): vozidlo môže točiť volantom, zrýchľovať aj brzdiť (vykonáva ovládanie), ale nechá vodiča prevziať kontrolu ak si vodič všimne objekt alebo situáciu na ktorú vozidlo nereaguje. V týchto prvých troch úrovniach je vodič povinný sledovať dopravnú situáciu a podmienky okolo seba.
+\item Úroveň 3 (podmienečná asistencia): vozidlo monitoruje okolie a vykonáva ovládanie ale len v určitých prostrediach a situáciach, ako sú napríklad diaľnice. Vodič však musí byť pripravený zasiahnuť ak ho k tomu vozidlo vyzve.
+\item Úroveň 4 (výsoká automatizácia): vozidlo monitoruje okolie a vykonáva ovládanie vo viacerých prostrediach a situáciach, nie však pri všetkých, napríklad pri zlých poveternostných podmienkach. Pri bezpečnej situácii šofér zapne automatické ovládanie, potom už nie je jeho zásah pri chode vozidla potrebný.
+\item Úroveň 5 (plná automatizácia): vodič zadá len destináciu a naštartuje vozidlo. Vozidlo sa stará o všetky ostatné úlohy. Vozidlo sa presunie do zadanej destinácie, ak táto destinácia nemá obmedzenia a všetky úkony a rozhodnutia robí samo. (Standard SAE J3016, 2019) \cite{Howautonomouscarswork}
+\end{itemize}
 
-\paragraph{Veľmi dôležitá poznámka.}
-Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
+\subsection{Ovládacie prvky a technológie autonómneho vozidla}
+Autonómne vozidlá pri svojej prevádzke používajú okrem umelej inteligencie množstvo ďaľších technológii a ovládacích prvkov. Vstupy (dáta) z týchto technológii spracúva počítač vysokou rýclosťou a na základe získaných informácii za pomoci softvéru pošle výstupné dáta do príslušných elektromechanických jednotiek, ktoré majú na starosť automatické točenie volantom, brzdenie a akceleráciu. Tento počítač je umiestnený vo vozidle a je napojený na GPS a internet aby mal dostupné relevantné dáta v reálnom čase. Technológie, ktoré zabezpečujú zisk dát spracovávaných počítačom sú nasledovné:
+GPS (Global Positioning system): je satelitný navigačný systém, ktorý poskytuje informácie o polohe a čase kdekoľvek na zemi, kde nič nebráni prenosu zo satelitov do GPS zariadenia. Polohu naraz určujú najmenej štyri satelity. GPS zabezpečuje koordináciu vozidla na trase, informácie o jeho polohe. GPS doplňuje IMU (Inertial measurement unit). Je to elektronické zariadenie, ktoré používa kombináciu akcelometrov, gyroskopov a magnetometrov aby napomáhal GPS keď nie je dostupný signál napríklad v tuneloch, za zlého počasia alebo keď je prítomná elektromagnetická interferencia.\cite{Howautonomouscarswork}
 
+Ultrasonické senzory: sú namontované po stranách vozidla. Merajú pozíciu a vzdialenosť objektov pri parkovaní za pomoci ultrazvukových vĺn, varujú pred kolíziou a prechodom cez pruhy.\cite{Howautonomouscarswork}
 
+Videokamery: sú namontované na prednom skle a poskytujú trojdimenzionálny obraz v reálnom čase. Rozpoznávajú dopravné značenie, chodcov, zvieratá atď.\cite{Howautonomouscarswork}
 
-\section{Dôležitá časť} \label{dolezita}
-
-
-
-
-\section{Ešte dôležitejšia časť} \label{dolezitejsia}
-
-
-
-
-\section{Záver} \label{zaver} % prípadne iný variant názvu
-
-
-
-%\acknowledgement{Ak niekomu chcete poďakovať\ldots}
+LIDAR (Light detection and Ranging): je zariadenie umiestnené na streche vozidla, ktoré detekuje a sleduje objekty a vytvorí 3D mapu okolia. Meria vzdialenosť svetelným lúčom a analyzuje odrazené svetlo. Dáta následne posiela do počítača na spracovanie a vytvorenie mapy. Skladá sa z vysielača laserového lúča, zrkadla a prijímača laserového lúča. Pokrýva dĺžku 32 metrov a má 360-stupňový rozsah.\cite{Howautonomouscarswork}
 
 
-% týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
+
+
 \bibliography{literatura}
-\bibliographystyle{plain} % prípadne alpha, abbrv alebo hociktorý iný
+\bibliographystyle{plain} 
 \end{document}
